@@ -5,16 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting...</title>
     <script type="text/javascript" defer>
-      const isInstagramBrowser = () => {
+      const detectDevice = () => {
         const userAgent =
           navigator.userAgent || navigator.vendor || window.opera;
-        return userAgent.match(/instagram/i);
+        if (/android/i.test(userAgent)) {
+          return "Android";
+        } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+          return "iOS";
+        } else {
+          return "Unknown";
+        }
       };
 
+      const deviceType = detectDevice();
+
+      // const isInstagramBrowser = () => {
+      //   const userAgent =
+      //     navigator.userAgent || navigator.vendor || window.opera;
+      //   return userAgent.match(/instagram/i);
+      // };
+
       function redirect() {
-        if (isInstagramBrowser()) {
+        if (deviceType == "iOS") {
           window.location.href = "https://www.apple.com/safari/";
-        } else {
+        } else if (deviceType == "Android") {
           window.location.href =
             "intent://www.google.com#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=http://www.google.com;end";
         }
