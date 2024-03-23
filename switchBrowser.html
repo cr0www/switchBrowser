@@ -4,9 +4,16 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
       function redirect() {
-        // Attempt to redirect to a URL that prompts to open in the default browser
+        // Specify your desired URL here
+        var urlToOpen = encodeURIComponent("http://www.google.com");
+
+        // Update the window.location.href to include your URL
         window.location.href =
-          "intent://#Intent;scheme=http;package=com.android.chrome;end";
+          "intent://" +
+          urlToOpen +
+          "#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=" +
+          urlToOpen +
+          ";end";
       }
     </script>
   </head>
