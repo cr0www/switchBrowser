@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting...</title>
-    <script type="text/javascript">
+    <script type="text/javascript" defer>
+      const isInstagramBrowser = () => {
+        const userAgent =
+          navigator.userAgent || navigator.vendor || window.opera;
+        return userAgent.match(/instagram/i);
+      };
+
       function redirect() {
-        // Attempt to redirect to a URL that prompts to open in the default browser
-        window.location.href =
-          "intent://www.google.com#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=http://www.google.com;end";
+        if (isInstagramBrowser()) {
+          window.location.href = "https://www.apple.com/safari/";
+        } else {
+          window.location.href =
+            "intent://www.google.com#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=http://www.google.com;end";
+        }
       }
     </script>
   </head>
-  <body onload="redirect()">
-    <p>Please wait while we redirect you...</p>
-  </body>
+  <body onload="redirect()"></body>
 </html>
