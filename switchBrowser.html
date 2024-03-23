@@ -19,18 +19,14 @@
 
       const deviceType = detectDevice();
 
-      // const isInstagramBrowser = () => {
-      //   const userAgent =
-      //     navigator.userAgent || navigator.vendor || window.opera;
-      //   return userAgent.match(/instagram/i);
-      // };
+      // Change this accordingly
+      const site = "x.com";
 
       function redirect() {
         if (deviceType == "iOS") {
-          window.location.href = "https://www.apple.com/safari/";
+          window.location.href = `http://www.${site}`;
         } else if (deviceType == "Android") {
-          window.location.href =
-            "intent://www.google.com#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=http://www.google.com;end";
+          window.location.href = `intent://www.${site}#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=http://www.${site};end`;
         }
       }
     </script>
